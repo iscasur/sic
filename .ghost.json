@@ -1,0 +1,10 @@
+{
+  "development": {
+    "apiUrl": "https://sicastro.herokuapp.com",
+    "contentApiKey": "f6376b4c60fc225c6d76f67f56"
+  },
+  "production": {
+    "apiUrl": "https://sicastro.herokuapp.com",
+    "contentApiKey": "f6376b4c60fc225c6d76f67f56"
+  }
+}
