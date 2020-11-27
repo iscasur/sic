@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
+import { DiscussionEmbed } from 'disqus-react';
+
 import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
@@ -42,6 +44,18 @@ const Post = ({ data, location }) => {
                             />
                         </section>
                     </article>
+                    <aside className="comments">
+                        <section className="post-full-content post-comments">
+                            <DiscussionEmbed
+                                shortname='sicastro'
+                                config={ {
+                                    url: post.url,
+                                    identifier: post.id,
+                                    title: post.title,
+                                } }
+                            />
+                        </section>
+                    </aside>
                 </div>
             </Layout>
         </>
