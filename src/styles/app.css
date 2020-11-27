@@ -20,16 +20,17 @@ what's here to work the way you'd like it to.
 /* ---------------------------------------------------------- */
 
 :root {
-
     /* Colours */
     --color-primary: #3eb0ef;
-    --color-base: #15171A;
-    --color-secondary: #5B7A81;
+    --color-base: #15171a;
+    --color-secondary: #5b7a81;
     --color-border: #c7d5d8;
     --color-bg: #f5f5f5;
 
     /* Fonts */
-    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
     --font-serif: Georgia, Times, serif;
     --font-mono: Menlo, Courier, monospace;
     --font-light: 100;
@@ -41,9 +42,7 @@ what's here to work the way you'd like it to.
     --height: 4rem;
     --margin: 2rem;
     --radius: 0.6rem;
-
 }
-
 
 /* Reset
 /* ---------------------------------------------------------- */
@@ -310,7 +309,8 @@ html {
 body {
     overflow-x: hidden;
     color: #3c484e;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 1.5rem;
     line-height: 1.6em;
     font-weight: 400;
@@ -565,7 +565,7 @@ h6 {
 }
 
 .content-body h1 {
-    margin: 1.0em 0 0.5em 0;
+    margin: 1em 0 0.5em 0;
     font-size: 3.4rem;
     font-weight: 700;
 }
@@ -627,7 +627,7 @@ h6 {
     margin: 0.5em 0;
     padding: 1em 0 1.5em;
     border: 0;
-    font-family: Georgia,serif;
+    font-family: Georgia, serif;
     color: var(--color-primary);
     font-style: italic;
     font-size: 3.2rem;
@@ -637,7 +637,7 @@ h6 {
 
 .content-body h6 {
     margin: 0.5em 0 0.2em 0;
-    font-size: 2.0rem;
+    font-size: 2rem;
     font-weight: 700;
 }
 
@@ -656,6 +656,10 @@ h6 {
     background: var(--color-base);
     color: #fff;
     border-radius: 12px;
+}
+
+.share-post {
+    margin: 2em 0;
 }
 
 /* Header
@@ -799,7 +803,6 @@ h6 {
     color: var(--color-secondary);
 }
 
-
 .post-card-title {
     margin: 0 0 10px 0;
     padding: 0;
@@ -858,7 +861,6 @@ h6 {
     width: 26px;
 }
 
-
 /* Tag Archives
 /* ---------------------------------------------------------- */
 
@@ -887,7 +889,6 @@ h6 {
         font-size: 1.7rem;
     }
 }
-
 
 /* Author Archives
 /* ---------------------------------------------------------- */
@@ -946,7 +947,6 @@ h6 {
     }
 }
 
-
 /* Pagination
 /* ---------------------------------------------------------- */
 
@@ -979,13 +979,12 @@ h6 {
     font-size: 1.3rem;
 }
 
-
 /* Footer
 /* ---------------------------------------------------------- */
 
 .site-foot {
     padding: 20px 0 40px 0;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 1.3rem;
     background: var(--color-base);
 }
@@ -997,12 +996,12 @@ h6 {
 }
 
 .site-foot-nav a {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .site-foot-nav a:hover {
     text-decoration: none;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
 }
 
 .site-foot-nav-right a {
@@ -1013,7 +1012,6 @@ h6 {
 .site-foot-nav-right a:last-child {
     padding-right: 0;
 }
-
 
 /* Koenig Styles
 /* ---------------------------------------------------------- */
@@ -1131,32 +1129,32 @@ h6 {
     flex-direction: column;
     max-width: 1040px;
     width: 100%;
-  }
-  
-  .kg-gallery-row {
+}
+
+.kg-gallery-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
-  }
-  
-  .kg-gallery-image img {
+}
+
+.kg-gallery-image img {
     display: block;
     margin: 0;
     width: 100%;
     height: 100%;
-  }
-  
-  .kg-gallery-row:not(:first-of-type) {
+}
+
+.kg-gallery-row:not(:first-of-type) {
     margin: 0.75em 0 0 0;
-  }
-  
-  .kg-gallery-image:not(:first-of-type) {
+}
+
+.kg-gallery-image:not(:first-of-type) {
     margin: 0 0 0 0.75em;
-  }
-  
-  .kg-gallery-card + .kg-image-card.kg-width-wide,
-  .kg-gallery-card + .kg-gallery-card,
-  .kg-image-card.kg-width-wide + .kg-gallery-card,
-  .kg-image-card.kg-width-wide + .kg-image-card.kg-width-wide {
+}
+
+.kg-gallery-card + .kg-image-card.kg-width-wide,
+.kg-gallery-card + .kg-gallery-card,
+.kg-image-card.kg-width-wide + .kg-gallery-card,
+.kg-image-card.kg-width-wide + .kg-image-card.kg-width-wide {
     margin: -2.25em 0 3em;
-  }
+}
