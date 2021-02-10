@@ -9,6 +9,8 @@ import { InlineShareButtons } from 'sharethis-reactjs';
 import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
+import { Tags } from '@tryghost/helpers-gatsby'
+
 /**
 * Single post view (/:slug)
 *
@@ -31,24 +33,30 @@ const Post = ({ data, location }) => {
             <Layout>
                 <div className="container">
                     <article className="content">
-                        <section className="post-full-content">
-                            <h1 className="content-title">{post.title}</h1>
-                            <p class="post-full-custom-excerpt">{post.excerpt}</p>
+                        <section className="post-header">
+                            <div className="post-header__title">
+                                {post.tags && <div className="post-card-tags"> <Tags post={post} visibility="public" autolink={false} /></div>}
+                                <h1 className="content-title">{post.title}</h1>
+                                <h4 className="author-name">{post.primary_author.name}</h4>
+                                <span className="byline-meta-date">{post.created_at_pretty}</span>
+                            </div>
+                            <div className="post-header__feature">
+                                {post.feature_image ?
+                                    <figure className="post-feature-image">
+                                        <img src={post.feature_image} alt={post.title} />
+                                    </figure> : null}
+                            </div>
                         </section>
-                        { post.feature_image ?
-                            <figure className="post-feature-image">
-                                <img src={ post.feature_image } alt={ post.title } />
-                            </figure> : null }
                         <section className="post-full-content">
 
-                            {/* The main post content */ }
+                            {/* The main post content */}
                             <section
                                 className="content-body load-external-scripts"
                                 dangerouslySetInnerHTML={{ __html: post.html }}
                             />
                             <section className="share-post">
                                 <InlineShareButtons
-                                    config={ {
+                                    config={{
                                         alignment: 'left',    // alignment of buttons (left, center, right)
                                         color: 'social',      // set the color of buttons (social, white)
                                         enabled: true,        // show/hide buttons (true, false)
@@ -72,7 +80,7 @@ const Post = ({ data, location }) => {
                                         message: post.excerpt,     // (only for email sharing)
                                         subject: post.title,  // (only for email sharing)
                                         username: 'sicconsultores' // (only for twitter sharing)
-                                    } }
+                                    }}
                                 />
                             </section>
                         </section>
@@ -81,11 +89,11 @@ const Post = ({ data, location }) => {
                         <section className="post-full-content post-comments">
                             <DiscussionEmbed
                                 shortname='sicastro'
-                                config={ {
+                                config={{
                                     url: post.url,
                                     identifier: post.id,
                                     title: post.title,
-                                } }
+                                }}
                             />
                         </section>
                     </aside>

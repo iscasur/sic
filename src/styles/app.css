@@ -26,6 +26,7 @@ what's here to work the way you'd like it to.
     --color-secondary: #5b7a81;
     --color-border: #c7d5d8;
     --color-bg: #f5f5f5;
+    --color-link: #004978;
 
     /* Fonts */
     --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -443,7 +444,7 @@ blockquote cite a {
 }
 
 a {
-    color: #26a8ed;
+    color: var(--color-link);
     text-decoration: none;
 }
 
@@ -542,17 +543,50 @@ h6 {
     font-family: var(--font-serif);
 }
 
+.post-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 0 6vw;
+}
+
+.post-header__title {
+    align-self: self-end;
+    padding-right: 2rem;
+}
+
+.author-name {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.byline-meta-date {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.post-feature-image img {
+    width: 100%;
+    min-height: 400px;
+    object-fit: cover;
+}
+
 .post-full-content {
     max-width: 720px;
     margin: 0 auto;
     background: #fff;
 }
 
-.post-feature-image img {
-    margin: 0 0 3vw;
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
+.post-full-content a {
+    color: var(--color-link);
+    border-bottom: 1px solid var(--color-link);
+    padding: 0 0.2rem;
+}
+
+.post-full-content a:hover {
+    text-decoration: none;
+    color: var(--color-bg);
+    background-color: var(--color-link);
+    transition: all 0.5s ease-in;
 }
 
 .content-body h1,
@@ -577,12 +611,12 @@ h6 {
 
 .content-title {
     margin: 0 0 0.8em;
-    font-size: 5rem;
+    font-size: 4rem;
 }
 @media (max-width: 500px) {
     .content-title {
         margin: 0.8em 0;
-        font-size: 3.4rem;
+        font-size: 2.4rem;
     }
     .content {
         font-size: 1.8rem;
@@ -668,16 +702,14 @@ h6 {
 .site-head {
     padding-top: 20px;
     padding-bottom: 20px;
-    color: #fff;
-    background: var(--color-base);
     background-position: center;
     background-size: cover;
 }
 
 .site-nav-item {
     display: inline-block;
-    padding: 5px 10px;
-    color: #fff;
+    font-size: 1.6rem;
+    padding: 5px 15px;
     opacity: 0.7;
 }
 
@@ -691,8 +723,22 @@ h6 {
     margin: -5px 0 0;
 }
 
+.logo {
+    display: flex;
+    color: var(--primary);
+    align-items: center;
+}
+
+.logo:hover {
+    text-decoration: none;
+}
+
 .site-logo {
-    height: 25px;
+    height: 60px;
+}
+
+.site-title {
+    margin-left: 1rem;
 }
 
 .site-mast {
@@ -720,15 +766,14 @@ h6 {
 .site-banner-title {
     margin: 0;
     padding: 0;
-    color: #fff;
-    font-size: 4rem;
+    font-size: 2rem;
     line-height: 1.3em;
 }
 
 .site-banner-desc {
-    margin: 5px 0 0 0;
+    margin: 0;
     padding: 0;
-    font-size: 2.4rem;
+    font-size: 1.6rem;
     line-height: 1.3em;
     opacity: 0.7;
 }
@@ -746,10 +791,10 @@ h6 {
 
 .site-nav-button {
     display: inline-block;
-    padding: 5px 10px;
-    border: #fff 1px solid;
-    color: #fff;
-    font-size: 1.3rem;
+    padding: 5px 15px;
+    border: var(--color-link) 1px solid;
+    color: var(--color-link);
+    font-size: 1.6rem;
     line-height: 1em;
     border-radius: var(--radius);
     opacity: 0.7;
@@ -757,13 +802,15 @@ h6 {
 
 .site-nav-button:hover {
     text-decoration: none;
+    color: #fff;
+    background: var(--color-link);
 }
 
 /* Main
 /* ---------------------------------------------------------- */
 
 .site-main {
-    padding: 4vw 0;
+    padding: 2vw 0;
 }
 
 /* Index
@@ -801,6 +848,7 @@ h6 {
     font-size: 1.4rem;
     line-height: 1.15em;
     color: var(--color-secondary);
+    text-transform: uppercase;
 }
 
 .post-card-title {
