@@ -350,6 +350,10 @@ video {
     vertical-align: middle;
 }
 
+iframe {
+    margin: 0 0 3vw 0;
+}
+
 fieldset {
     margin: 0;
     padding: 0;
@@ -540,13 +544,81 @@ h6 {
 .content-body {
     display: flex;
     flex-direction: column;
-    font-family: var(--font-serif);
+    font-family: var(--font-sans-serif);
+}
+
+.suscribe {
+    background-color: rgb(28, 45, 67);
+    border-radius: 1rem;
+    padding: 6rem;
+    text-align: center;
+}
+
+.suscribe-content {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.suscribe h3 {
+    margin: 0 0 0.5em 0;
+    font-size: 3rem;
+    color: var(--color-bg);;
+}
+
+.suscribe p {
+    color: var(--color-border);;
+}
+
+.suscribe p:last-child {
+    margin-bottom: 0;
+}
+
+.suscribe small {
+    font-size: 1.2rem;
+}
+
+.suscribe input {
+    width: calc(100%/3);
+    border: 0;
+    padding: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.3rem;
+    font-size: 1.6rem;
+}
+
+.suscribe input[type="submit"] {
+    background: rgb(0, 177, 157);
+    color: #fff;
+    text-transform: uppercase;
+    width: 20%;
+}
+
+@media (max-width: 500px) {
+    .suscribe {
+        padding: 3rem;
+    }
+    .suscribe input,
+    .suscribe input[type="submit"] {
+        width: 100%;
+    }
 }
 
 .post-header {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     margin: 0 0 6vw;
+}
+
+@media (max-width: 768px) {
+    .post-header__feature {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .post-header {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .post-header__title {
@@ -756,6 +828,13 @@ h6 {
     padding-right: 0;
 }
 
+@media (max-width: 500px) {
+    .site-mast {
+        flex-direction: column;
+        height: 110px;
+    }
+}
+
 .site-banner {
     max-width: 80%;
     margin: 0 auto;
@@ -845,7 +924,7 @@ h6 {
 
 .post-card-tags {
     margin: 0 0 5px 0;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 1.15em;
     color: var(--color-secondary);
     text-transform: uppercase;

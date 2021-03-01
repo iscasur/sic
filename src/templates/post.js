@@ -11,6 +11,8 @@ import { MetaData } from '../components/common/meta'
 
 import { Tags } from '@tryghost/helpers-gatsby'
 
+import MailchimpComponent from '../components/common/Mailchimp'
+
 /**
 * Single post view (/:slug)
 *
@@ -47,6 +49,8 @@ const Post = ({ data, location }) => {
                                     </figure> : null}
                             </div>
                         </section>
+
+
                         <section className="post-full-content">
 
                             {/* The main post content */}
@@ -54,10 +58,17 @@ const Post = ({ data, location }) => {
                                 className="content-body load-external-scripts"
                                 dangerouslySetInnerHTML={{ __html: post.html }}
                             />
+
+                            <section className="suscribe">
+                                <div className="suscribe-content">
+                                    <MailchimpComponent />
+                                </div>
+                            </section>
+
                             <section className="share-post">
                                 <InlineShareButtons
                                     config={{
-                                        alignment: 'left',    // alignment of buttons (left, center, right)
+                                        alignment: 'center',    // alignment of buttons (left, center, right)
                                         color: 'social',      // set the color of buttons (social, white)
                                         enabled: true,        // show/hide buttons (true, false)
                                         font_size: 14,        // font size for the buttons

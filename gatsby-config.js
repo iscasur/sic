@@ -183,6 +183,15 @@ module.exports = {
                 addUncaughtPages: true,
             },
         },
+        // Mailchimp
+        // https://www.gatsbyjs.com/plugins/gatsby-plugin-mailchimp/
+        {
+            resolve: 'gatsby-plugin-mailchimp',
+            options: {
+                endpoint: 'https://sicastro.us11.list-manage.com/subscribe/post?u=353fd6ddb0977120e8fc329d4&amp;id=1b436d7e3e', //
+                timeout: 3500, //
+            },
+        },
         `gatsby-plugin-catch-links`,
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-force-trailing-slashes`,
