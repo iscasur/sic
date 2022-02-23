@@ -1,38 +1,49 @@
-const path = require(`path`)
+const path = require(`path`);
 
-const config = require(`./src/utils/siteConfig`)
-const generateRSSFeed = require(`./src/utils/rss/generate-feed`)
+const config = require(`./src/utils/siteConfig`);
+const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
 
-let ghostConfig
+let ghostConfig;
 
 try {
-    ghostConfig = require(`./.ghost`)
+    ghostConfig = require(`./.ghost`);
 } catch (e) {
     ghostConfig = {
         production: {
             apiUrl: process.env.GHOST_API_URL,
             contentApiKey: process.env.GHOST_CONTENT_API_KEY,
         },
-    }
+    };
 } finally {
-    const { apiUrl, contentApiKey } = process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production
+    const { apiUrl, contentApiKey } =
+        process.env.NODE_ENV === `development`
+            ? ghostConfig.development
+            : ghostConfig.production;
 
     if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
-        throw new Error(`GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`) // eslint-disable-line
+        throw new Error(
+            `GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`
+        ); // eslint-disable-line
     }
 }
 
-if (process.env.NODE_ENV === `production` && config.siteUrl === `http://localhost:8000` && !process.env.SITEURL) {
-    throw new Error(`siteUrl can't be localhost and needs to be configured in siteConfig. Check the README.`) // eslint-disable-line
+if (
+    process.env.NODE_ENV === `production` &&
+    config.siteUrl === `http://localhost:8000` &&
+    !process.env.SITEURL
+) {
+    throw new Error(
+        `siteUrl can't be localhost and needs to be configured in siteConfig. Check the README.`
+    ); // eslint-disable-line
 }
 
 /**
-* This is the place where you can tell Gatsby which plugins to use
-* and set them up the way you want.
-*
-* Further info 👉🏼 https://www.gatsbyjs.org/docs/gatsby-config/
-*
-*/
+ * This is the place where you can tell Gatsby which plugins to use
+ * and set them up the way you want.
+ *
+ * Further info 👉🏼 https://www.gatsbyjs.org/docs/gatsby-config/
+ *
+ */
 module.exports = {
     siteMetadata: {
         siteUrl: process.env.SITEURL || config.siteUrl,
@@ -108,9 +119,7 @@ module.exports = {
                     }
                 }
               `,
-                feeds: [
-                    generateRSSFeed(config),
-                ],
+                feeds: [generateRSSFeed(config)],
             },
         },
         {
@@ -186,10 +195,18 @@ module.exports = {
         // Mailchimp
         // https://www.gatsbyjs.com/plugins/gatsby-plugin-mailchimp/
         {
-            resolve: 'gatsby-plugin-mailchimp',
+            resolve: `gatsby-plugin-mailchimp`,
             options: {
-                endpoint: 'https://sicastro.us11.list-manage.com/subscribe/post?u=353fd6ddb0977120e8fc329d4&amp;id=1b436d7e3e', //
+                endpoint: `https://sicastro.us11.list-manage.com/subscribe/post?u=353fd6ddb0977120e8fc329d4&amp;id=1b436d7e3e`, //
                 timeout: 3500, //
+            },
+        },
+        // Google Adsense
+        // https://www.gatsbyjs.com/plugins/gatsby-plugin-google-adsense/
+        {
+            resolve: `gatsby-plugin-google-adsense`,
+            options: {
+                publisherId: `ca-pub-1061231532294685`,
             },
         },
         `gatsby-plugin-catch-links`,
@@ -197,4 +214,4 @@ module.exports = {
         `gatsby-plugin-force-trailing-slashes`,
         `gatsby-plugin-offline`,
     ],
-}
+};
