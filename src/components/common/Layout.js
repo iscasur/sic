@@ -71,8 +71,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         navClass="site-nav-item"
                                     />
                                     <a
-                                        className="site-nav-button"
                                         href="https://sicastro.com/suscribete"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="site-nav-button"
                                     >
                                         Suscríbete
                                     </a>
