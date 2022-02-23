@@ -1,60 +1,60 @@
-import React from 'react'
-import addToMailchimp from 'gatsby-plugin-mailchimp'
+import React, { useState } from "react";
+import addToMailchimp from "gatsby-plugin-mailchimp";
 
-export default class MailchimpComponent extends React.Component {
-  state = {
-    fname: null,
-    email: null,
-    message: 'Únete a nuestro newsletter',
-  }
+const MailchimpComponent = () => {
+    const [name, setName] = useState(``);
+    const [email, setEmail] = useState(``);
+    const [message, setMessage] = useState(`Únete a nuestro newsletter`);
+    const [text, setText] = useState(
+        `Recibe nuestro contenido y libérate del estrés del trabajo`
+    );
 
-  _handleChange = e => {
-    console.log({
-      [`${e.target.name}`]: e.target.value,
-    })
-    this.setState({
-      [`${e.target.name}`]: e.target.value,
-    })
-  }
+    const handleChangeName = (e) => {
+        setName(e.target.value);
+    };
 
-  _handleSubmit = e => {
-    e.preventDefault();
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value);
+    };
 
-    console.log('submit', this.state)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await addToMailchimp(email, { NOMBRE: name });
+        setMessage(`¡Gracias por suscribirte ${name}!`);
+        setText(`Revisa tu bandeja de entrada y confirma la suscripción ⭐️`);
+        setName(``);
+        setEmail(``);
+    };
 
-    this.setState({ message: '¡Gracias por suscribirte! ⭐️' })
-
-    addToMailchimp(this.state.email, this.state) // listFields are optional if you are only capturing the email address.
-      .then(({ msg, result }) => {
-        console.log('msg', `${result}: ${msg}`)
-
-        if (result !== 'success') {
-          throw msg
-        }
-
-        alert(msg)
-      })
-      .catch(err => {
-        console.log('err', err)
-        alert(err)
-      })
-
-    this.setState({ fname: null })
-    this.setState({ email: null })
-  }
-
-  render() {
     return (
-      <>
-        <h3>{this.state.message}</h3>
-        <p>Recibe nuestro contenido y libérate del estrés del trabajo.</p>
-        <form onSubmit={this._handleSubmit}>
-          <input type="text" onChange={this._handleChange} placeholder="Nombre (sin apellidos)" name="name" value={this.state.fname} />
-          <input type="email" onChange={this._handleChange} placeholder="Correo electrónico" name="email" value={this.state.email} />
-          <input type="submit" value="¡Me uno!" />
-          <p><small>Puedes darte de baja en cualquier momento, sin resentimientos</small></p>
-        </form>
-      </>
-    )
-  }
-}
+        <>
+            <h3>{message}</h3>
+            <p>{text}</p>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    onChange={handleChangeName}
+                    placeholder="Nombre (sin apellidos)"
+                    name="name"
+                    value={name}
+                />
+                <input
+                    type="email"
+                    onChange={handleChangeEmail}
+                    placeholder="Correo electrónico"
+                    name="email"
+                    value={email}
+                />
+                <input type="submit" value="¡Me uno!" />
+                <p>
+                    <small>
+                        Puedes darte de baja en cualquier momento, sin
+                        resentimientos
+                    </small>
+                </p>
+            </form>
+        </>
+    );
+};
+
+export default MailchimpComponent;
