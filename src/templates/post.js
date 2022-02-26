@@ -11,7 +11,7 @@ import { MetaData } from "../components/common/meta"
 
 import { Tags } from "@tryghost/helpers-gatsby"
 
-import MailchimpComponent from "../components/common/Mailchimp"
+import SubscribeWidget from "../components/common/SubscribeWidget"
 
 /**
  * Single post view (/:slug)
@@ -70,11 +70,13 @@ const Post = ({ data, location }) => {
                                 dangerouslySetInnerHTML={{ __html: post.html }}
                             />
 
-                            <section className="suscribe">
+                            <SubscribeWidget />
+
+                            {/* <section className="suscribe">
                                 <div className="suscribe-content">
                                     <MailchimpComponent />
                                 </div>
-                            </section>
+                            </section> */}
 
                             <section className="share-post">
                                 <InlineShareButtons

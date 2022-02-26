@@ -1,0 +1,39 @@
+.subscribe-widget {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 72rem;
+    width: 100%;
+}
+
+.subscribe-widget h3 {
+    font-size: 3rem;
+    margin: 0 0 0.5em 0;
+}
+
+.subscribe-widget small {
+    font-size: 1.2rem;
+}
+
+.subscribe-widget input {
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 0.5rem;
+    width: 32%;
+}
+
+.subscribe-widget input[type="submit"] {
+    background: rgb(0, 177, 157);
+    color: #fff;
+    text-transform: uppercase;
+    width: 30%;
+}
+
+@media (max-width: 500px) {
+    .subscribe-widget input {
+        width: 100%;
+    }
+}

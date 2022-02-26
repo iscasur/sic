@@ -1,14 +1,14 @@
 import React from "react"
 import { Layout } from "../components/common"
-import MailchimpComponent from "../components/common/Mailchimp"
+import SubscribeWidget from "../components/common/SubscribeWidget"
 
 const SubscribePage = () => (
     <>
         <Layout>
             <div className="container">
-                <article className="content" style={{ textAlign: `center` }}>
+                <article className="content">
                     <section className="content-body">
-                        <MailchimpComponent />
+                        <SubscribeWidget />
                     </section>
                 </article>
             </div>
