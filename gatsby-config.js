@@ -212,7 +212,6 @@ module.exports = {
                 publisherId: `ca-pub-1061231532294685`,
             },
         },
-        `gatsby-plugin-sass`,
         `gatsby-plugin-catch-links`,
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-force-trailing-slashes`,

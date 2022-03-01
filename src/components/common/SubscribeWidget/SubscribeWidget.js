@@ -1,4 +1,4 @@
-import "./SubscribeWidget.scss"
+import "./SubscribeWidget.css"
 import React, { useState } from "react"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 
