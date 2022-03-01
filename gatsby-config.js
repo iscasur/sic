@@ -1,29 +1,30 @@
-const path = require(`path`);
+const path = require(`path`)
 
-const config = require(`./src/utils/siteConfig`);
-const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
+const config = require(`./src/utils/siteConfig`)
+const generateRSSFeed = require(`./src/utils/rss/generate-feed`)
 
-let ghostConfig;
+let ghostConfig
 
 try {
-    ghostConfig = require(`./.ghost`);
+    ghostConfig = require(`./.ghost`)
 } catch (e) {
     ghostConfig = {
         production: {
             apiUrl: process.env.GHOST_API_URL,
             contentApiKey: process.env.GHOST_CONTENT_API_KEY,
         },
-    };
+    }
 } finally {
     const { apiUrl, contentApiKey } =
         process.env.NODE_ENV === `development`
             ? ghostConfig.development
-            : ghostConfig.production;
+            : ghostConfig.production
 
     if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
+        // eslint-disable-next-line no-unsafe-finally
         throw new Error(
             `GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`
-        ); // eslint-disable-line
+        ) // eslint-disable-line
     }
 }
 
@@ -34,7 +35,7 @@ if (
 ) {
     throw new Error(
         `siteUrl can't be localhost and needs to be configured in siteConfig. Check the README.`
-    ); // eslint-disable-line
+    ) // eslint-disable-line
 }
 
 /**
@@ -187,6 +188,8 @@ module.exports = {
                     `/404`,
                     `/404.html`,
                     `/offline-plugin-app-shell-fallback`,
+                    `/suscribete`,
+                    `/suscribete.html`,
                 ],
                 createLinkInHead: true,
                 addUncaughtPages: true,
@@ -214,4 +217,4 @@ module.exports = {
         `gatsby-plugin-force-trailing-slashes`,
         `gatsby-plugin-offline`,
     ],
-};
+}

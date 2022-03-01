@@ -1,14 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
-import { Link, StaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+import React from "react"
+import PropTypes from "prop-types"
+import { Helmet } from "react-helmet"
+import { Link, StaticQuery, graphql } from "gatsby"
 
-import { Navigation } from ".";
-import config from "../../utils/siteConfig";
+import { Navigation } from "."
 
 // Styles
-import "../../styles/app.css";
+import "../../styles/app.css"
 
 /**
  * Main layout component
@@ -18,14 +16,8 @@ import "../../styles/app.css";
  * styles, and meta data for each page.
  *
  */
-const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
-    const site = data.allGhostSettings.edges[0].node;
-    const twitterUrl = site.twitter
-        ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}`
-        : null;
-    const facebookUrl = site.facebook
-        ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}`
-        : null;
+const DefaultLayout = ({ data, children, bodyClass }) => {
+    const site = data.allGhostSettings.edges[0].node
 
     return (
         <>
@@ -70,14 +62,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         data={site.navigation}
                                         navClass="site-nav-item"
                                     />
-                                    <a
-                                        href="https://sicastro.com/suscribete"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                    <Link
+                                        to="/suscribete"
                                         className="site-nav-button"
                                     >
                                         Suscríbete
-                                    </a>
+                                    </Link>
                                 </nav>
                             </div>
                         </div>
@@ -116,8 +106,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 </div>
             </div>
         </>
-    );
-};
+    )
+}
 
 DefaultLayout.propTypes = {
     children: PropTypes.node.isRequired,
@@ -127,8 +117,10 @@ DefaultLayout.propTypes = {
         file: PropTypes.object,
         allGhostSettings: PropTypes.object.isRequired,
     }).isRequired,
-};
+    props: PropTypes.object,
+}
 
+// eslint-disable-next-line arrow-parens
 const DefaultLayoutSettingsQuery = (props) => (
     <StaticQuery
         query={graphql`
@@ -149,8 +141,9 @@ const DefaultLayoutSettingsQuery = (props) => (
                 }
             }
         `}
+        // eslint-disable-next-line arrow-parens
         render={(data) => <DefaultLayout data={data} {...props} />}
     />
-);
+)
 
-export default DefaultLayoutSettingsQuery;
+export default DefaultLayoutSettingsQuery
