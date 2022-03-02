@@ -209,7 +209,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-google-adsense`,
             options: {
-                publisherId: `ca-pub-1061231532294685`,
+                publisherId: `ca-pub-7017426929740089`,
             },
         },
         `gatsby-plugin-catch-links`,
